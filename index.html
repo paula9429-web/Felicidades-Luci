@@ -80,7 +80,7 @@
     cursor: pointer;
   }
 
-  /* Adaptación para pantallas pequeñas */
+ 
   @media (max-width: 600px) {
     #inicial {
       padding: 15px;
@@ -152,7 +152,7 @@
     </span>
   </div>
 
-  <!-- Imagen entre texto y botón -->
+ 
   <div style="margin-top:20px;">
     <img src="ttn.jpg" width="500">
   </div>
@@ -161,27 +161,30 @@
     <input type="text" name="codigoCumple">
     <button style="width:200px; height:30px; background-color:blue; color:white;" role="button" onclick="compruebaCodigo()">Botón feo</button>
     
-    <!-- Icono con tooltip -->
+ 
     <div class="tooltip" onclick="mostrarPista()">
       🔍
       <span class="tooltiptext">Pista</span>
     </div>
   </div>
 
-  <!-- Texto rojo debajo -->
   <div style="margin-top:10px; color:red; font-weight:bold;">
     No vale hacer trampa ni pedir ayuda a Kevin
   </div>
 </div>
 
 <div id="videofelicidades">
-  <video controls width="100%">
-  <source src="https://drive.google.com/uc?export=download&id=1IjIJ0r7uxQxj-HVknni8fUT2GpHqmShu" type="video/mp4">
-  Tu navegador no soporta el video.
-</video>
+
+  <iframe width="100%" height="400"
+      src="https://www.youtube.com/embed/Dj46hDk_ScU"
+      title="Feliz Cumple"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+  </iframe>
 
   <div class="mensaje">
-   <b>¡Felices 33 Luci! ¿Ahora que ya tienes la edad de Jesucristo nos permites ser tu cruz? 
+    <b>¡Felices 33 Luci! ¿Ahora que ya tienes la edad de Jesucristo nos permites ser tu cruz? 
     Avísanos cuando te venga bien para darte tu regalo de verdad.</b>
   </div>
   <button id="volverBtn" onclick="volverInicio()">Atrás</button>
@@ -228,4 +231,5 @@ function cerrarPista() {
 
 </body>
 </html>
+
 
