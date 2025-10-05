@@ -1,0 +1,231 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('fondo_pitin.png'); 
+    background-size: cover;
+    background-position: center;
+    font-family: Roboto, sans-serif;
+  }
+
+  #inicial {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 90%;
+    box-sizing: border-box;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 60px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 3px 5px;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  #pistaImagen {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+  }
+
+  #pistaImagen img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 3px solid white;
+    border-radius: 10px;
+  }
+
+  #pistaImagen span {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Adaptación para pantallas pequeñas */
+  @media (max-width: 600px) {
+    #inicial {
+      padding: 15px;
+    }
+    #inicial span[style*="font-size:72px"] {
+      font-size: 36px !important;
+    }
+    #inicial span[style*="font-size:20px"] {
+      font-size: 16px !important;
+    }
+    button {
+      width: 100% !important;
+      max-width: 250px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+
+  #videofelicidades {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  #videofelicidades video {
+    max-width: 90%;
+    max-height: 70vh;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  #videofelicidades .mensaje {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  #volverBtn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div id="inicial" style="visibility:visible">
+  <div>
+    <span style="font-size:72px; font-weight:600; color:blue;">FELICIDADES!!!!!!</span>
+  </div>
+  <div style="margin-top:20px;">
+    <span style="font-size:20px; font-weight:500; color:black;">
+      Pensabas que nos habíamos olvidado eh, razones tienes para pensar que somos personas desastrosas, 
+      pero ya que no nos vamos a ver, estábamos ideando alguna cosilla un poco más especial y cutre 
+      (por qué no decirlo).
+    </span>
+  </div>
+
+  <!-- Imagen entre texto y botón -->
+  <div style="margin-top:20px;">
+    <img src="TTN.jpg" width="500">
+  </div>
+
+  <div style="margin-top:20px;">
+    <input type="text" name="codigoCumple">
+    <button style="width:200px; height:30px; background-color:blue; color:white;" role="button" onclick="compruebaCodigo()">Botón feo</button>
+    
+    <!-- Icono con tooltip -->
+    <div class="tooltip" onclick="mostrarPista()">
+      🔍
+      <span class="tooltiptext">Pista</span>
+    </div>
+  </div>
+
+  <!-- Texto rojo debajo -->
+  <div style="margin-top:10px; color:red; font-weight:bold;">
+    No vale hacer trampa ni pedir ayuda a Kevin
+  </div>
+</div>
+
+<div id="videofelicidades">
+  <video controls width="100%">
+  <source src="https://drive.google.com/uc?export=download&id=1IjIJ0r7uxQxj-HVknni8fUT2GpHqmShu" type="video/mp4">
+  Tu navegador no soporta el video.
+</video>
+
+  <div class="mensaje">
+   <b>¡Felices 33 Luci! ¿Ahora que ya tienes la edad de Jesucristo nos permites ser tu cruz? 
+    Avísanos cuando te venga bien para darte tu regalo de verdad.</b>
+  </div>
+  <button id="volverBtn" onclick="volverInicio()">Atrás</button>
+</div>
+
+<!-- Ventana emergente para la pista -->
+<div id="pistaImagen">
+  <span onclick="cerrarPista()">&times;</span>
+  <img src="pista.jpg" alt="Pista">
+</div>
+
+
+<script>
+function compruebaCodigo(codigoCumple) {
+  let codigo = document.getElementsByName("codigoCumple")[0].value;
+  if(codigo == "Hieloquehay"){
+    document.getElementById("inicial").style.display = "none";
+    document.getElementById("videofelicidades").style.display = "flex";
+  } else {
+    alert("ERROR!!!! La página se va a autodestruir en 5 segundos jajajaja. Es broma, venga que la pista es clara.");
+  }
+}
+
+function volverInicio() {
+  // Coger el vídeo y pararlo
+  let video = document.querySelector("#videofelicidades video");
+  video.pause();
+  video.currentTime = 0; // reinicia al principio
+
+  // Cambiar pantallas
+  document.getElementById("videofelicidades").style.display = "none";
+  document.getElementById("inicial").style.display = "block";
+}
+
+function mostrarPista() {
+  document.getElementById("pistaImagen").style.display = "flex";
+}
+
+function cerrarPista() {
+  document.getElementById("pistaImagen").style.display = "none";
+}
+</script>
+
+
+</body>
+</html>
+
